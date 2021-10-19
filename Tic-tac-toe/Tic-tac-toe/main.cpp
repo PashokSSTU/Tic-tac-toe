@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	//Board board;
-	//Game TicTacToe;
-	//TicTacToe.brd.Display();
+	Game TicTacToe;
+	TicTacToe.brd.Display();
 	return 0;
 }

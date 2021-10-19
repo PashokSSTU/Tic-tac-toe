@@ -10,8 +10,10 @@ private:
 	
 public:
 	Board brd;
-	Game();
-	~Game();
+	Game()
+	{}
+	~Game()
+	{}
 
 };
 

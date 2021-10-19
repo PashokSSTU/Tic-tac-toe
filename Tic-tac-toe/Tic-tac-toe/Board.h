@@ -7,7 +7,8 @@ private:
 	char board[3][3];
 public:
 	Board();
-	~Board();
+	~Board()
+	{}
 
 	void Display();
 	void Choose(int num, char player);
