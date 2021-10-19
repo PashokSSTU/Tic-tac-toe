@@ -5,15 +5,16 @@
 class Game
 {
 private:
-	char humPlayer = 'X';
-	char aiPlayer = 'O';
-	
+	char humPlayer;
+	char aiPlayer;
 public:
-	Board brd;
-	Game()
-	{}
+	Board board;
+	Game();
 	~Game()
 	{}
 
+	bool isOver();
+	char getHumPlayer() { return humPlayer; }
+	char getAIPlayer() { return aiPlayer; }
 };
 

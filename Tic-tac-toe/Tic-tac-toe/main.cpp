@@ -6,8 +6,15 @@ using namespace std;
 
 int main()
 {
-	//Board board;
 	Game TicTacToe;
-	TicTacToe.brd.Display();
+	TicTacToe.board.Display();
+	while (!TicTacToe.isOver())
+	{
+		int ch;
+		cout << "Your move: ";
+		cin >> ch;
+		TicTacToe.board.Choose(ch, TicTacToe.getHumPlayer());
+		TicTacToe.board.Display();
+	}
 	return 0;
 }

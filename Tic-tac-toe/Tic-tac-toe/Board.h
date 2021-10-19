@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
 
+class Game;
+
 class Board
 {
 private:
-	char board[3][3];
+	char board_arr[3][3];
 public:
 	Board();
 	~Board()
@@ -12,5 +14,7 @@ public:
 
 	void Display();
 	void Choose(int num, char player);
+
+	friend class Game;
 };
 
