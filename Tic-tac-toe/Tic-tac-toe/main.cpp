@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Board.h"
 #include "Game.h"
 
 using namespace std;
@@ -8,12 +7,23 @@ int main()
 {
 	Game TicTacToe;
 	TicTacToe.board.Display();
+
 	while (!TicTacToe.isOver())
 	{
-		int ch;
+		int choise;
+
+		// Ход игрока
 		cout << "Your move: ";
-		cin >> ch;
-		TicTacToe.board.Choose(ch, TicTacToe.getHumPlayer());
+		cin >> choise;
+		TicTacToe.board.Choose(choise, TicTacToe.getHumPlayer());
+		cout << endl;
+		
+		TicTacToe.board.Display();
+		
+		// Ход ИИ
+		cout << endl << "AI move: ";
+		TicTacToe.AIMove();
+
 		TicTacToe.board.Display();
 	}
 	return 0;

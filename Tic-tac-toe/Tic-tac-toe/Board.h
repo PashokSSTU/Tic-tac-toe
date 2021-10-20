@@ -7,6 +7,7 @@ class Board
 {
 private:
 	char board_arr[3][3];
+	int amountFreeCeils;
 public:
 	Board();
 	~Board()
@@ -14,7 +15,11 @@ public:
 
 	void Display();
 	void Choose(int num, char player);
+	int getAmountFreeCeils() { return amountFreeCeils; }
+	void setAmountFreeCeils(int num) { amountFreeCeils = num; }
+	void incrAmountFreeCeils() { amountFreeCeils++; }
 
-	friend class Game;
+	friend class GameProcessing;
+	friend class AI;
 };
 

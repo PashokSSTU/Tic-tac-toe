@@ -4,7 +4,9 @@ using namespace std;
 
 Board::Board()
 {
-	int count = 48; // 0 в ASCII кодировке после конвертации в char
+	amountFreeCeils = 9;
+
+	int count = 48; // '0' в ASCII кодировке после конвертации в char
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -35,5 +37,6 @@ void Board::Display()
 void Board::Choose(int num, char player)
 {
 	board_arr[num / 3][num % 3 - 1] = player;
+	amountFreeCeils--;
 }
 

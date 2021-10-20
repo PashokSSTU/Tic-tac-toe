@@ -1,2 +1,11 @@
-﻿  main.cpp
+﻿  AI.cpp
+C:\Pavel\General Arcade\Tic-tac-toe\Tic-tac-toe\Tic-tac-toe\AI.cpp(101,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Pavel\General Arcade\Tic-tac-toe\Tic-tac-toe\Tic-tac-toe\AI.cpp(117,21): warning C4018: <: несоответствие типов со знаком и без знака
+  Board.cpp
+  Game.cpp
+  GameProcessing.cpp
+  main.cpp
+  Создание кода...
+C:\Pavel\General Arcade\Tic-tac-toe\Tic-tac-toe\Tic-tac-toe\AI.cpp(93): warning C4715: AI::minimax: значение возвращается не при всех путях выполнения
+  LINK : не найден или не выполнена сборка C:\Pavel\General Arcade\Tic-tac-toe\Tic-tac-toe\Debug\Tic-tac-toe.exe при последней инкрементной компоновке; выполняется полная компоновка
   Tic-tac-toe.vcxproj -> C:\Pavel\General Arcade\Tic-tac-toe\Tic-tac-toe\Debug\Tic-tac-toe.exe
