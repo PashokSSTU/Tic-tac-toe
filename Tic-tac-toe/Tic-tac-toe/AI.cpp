@@ -72,8 +72,6 @@ int AI::minimax(int depth, bool isAI)
 
 void AI::makeBestMove()
 {
-	minimax(0, true);
-
 	vector<Move> nextMoves;
 
 	// Установка лучшего хода для ИИ
