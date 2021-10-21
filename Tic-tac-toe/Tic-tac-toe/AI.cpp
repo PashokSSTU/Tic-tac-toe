@@ -1,4 +1,5 @@
 #include "AI.h"
+#include "algorithm"
 #include <vector>
 
 using namespace std;
@@ -10,7 +11,7 @@ AI::AI(Board* _brd, GameProcessing* _process) :brd(_brd), process(_process)
 }
 
 
-int AI::minimax(int depth, bool isAI)
+int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
 {
 	count++;
 	if (process->AIWinning())
@@ -39,9 +40,18 @@ int AI::minimax(int depth, bool isAI)
 				{
 					brd->Choose(3 * i + j + 1, process->getAIPlayer()); // Делаем ход
 
-					bestScore = max(bestScore, minimax(depth + 1, false));
+					vector<Move> moves_depth(0);
+
+					bestScore = max(bestScore, minimax(depth + 1, false, &moves_depth));
 
 					brd->Choose(3 * i + j + 1, ' '); // Убираем ход
+
+					Move move;
+					move.x = i;
+					move.y = j;
+					move.score = bestScore;
+
+					moves->push_back(move);
 				}
 			}
 		}
@@ -58,9 +68,18 @@ int AI::minimax(int depth, bool isAI)
 				{
 					brd->Choose(3 * i + j + 1, process->getHumPlayer()); // Делаем ход
 
-					bestScore = min(bestScore, minimax(depth + 1, true));
+					vector<Move> moves_depth(0);
+
+					bestScore = min(bestScore, minimax(depth + 1, true, &moves_depth));
 
 					brd->Choose(3 * i + j + 1, ' '); // Убираем ход
+
+					Move move;
+					move.x = i;
+					move.y = j;
+					move.score = bestScore;
+
+					moves->push_back(move);
 				}
 			}
 		}
@@ -75,30 +94,12 @@ void AI::makeBestMove()
 		return;
 	}
 
-	vector<Move> nextMoves(0);
+	vector<Move> nextMoves(0); // Вектор возможных ходов ИИ с их оценкой
 
-	// Создание вектора возможных ходов
-	int bestScore = -1000000;
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			if (brd->board_arr[i][j] != 'X' && brd->board_arr[i][j] != 'O') // Проверка на пустоту
-			{
-				bestScore = max(bestScore, minimax(0, true));
-
-				Move move;
-				move.x = i;
-				move.y = j;
-				move.score = bestScore;
-
-				nextMoves.push_back(move);
-			}
-		}
-	}
+	minimax(0, true, &nextMoves);
 
 	// Выборка наилучшего хода для ИИ
-	bestScore = -1000000;
+	int bestScore = -1000000;
 	int index = -1;
 
 	for (int i = 0; i < nextMoves.size(); i++)

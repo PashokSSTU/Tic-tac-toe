@@ -40,18 +40,18 @@ bool Board::Choose(int num, char player)
 	{
 		board_arr[num / 3][num % 3 - 1] = (char)num + 48;
 		amountFreeCeils++;
-		return 1;
+		return true;
 	}
 
-	if (board_arr[num / 3][num % 3 - 1] == 'X' || board_arr[num / 3][num % 3 - 1] == 'O')
+	if ((board_arr[num / 3][num % 3 - 1] == 'X') || (board_arr[num / 3][num % 3 - 1] == 'O'))
 	{
 		cout << "Error! This ceil is not empty!" << endl;
-		return 0;
+		return false;
 	}
 
 	board_arr[num / 3][num % 3 - 1] = player;
 	amountFreeCeils--;
 
-	return 1;
+	return true;
 }
 

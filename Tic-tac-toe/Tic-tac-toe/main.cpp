@@ -13,14 +13,6 @@ int main()
 		int choise;
 
 		// Ход игрока
-		//TicTacToe.board.Choose(5, TicTacToe.getHumPlayer());
-		//TicTacToe.board.Choose(7, TicTacToe.getHumPlayer());
-		//TicTacToe.board.Choose(2, TicTacToe.getAIPlayer());
-		//TicTacToe.board.Choose(3, TicTacToe.getAIPlayer());
-		//TicTacToe.board.Choose(6, TicTacToe.getAIPlayer());
-
-		//TicTacToe.board.Display();
-
 		cout << "Your move: ";
 		cin >> choise;
 		while (!TicTacToe.board.Choose(choise, TicTacToe.getHumPlayer()))

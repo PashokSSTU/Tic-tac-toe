@@ -24,7 +24,7 @@ public:
 	~AI()
 	{}
 
-	int minimax(int depth, bool isAI);
+	int minimax(int depth, bool isAI, vector<AI::Move>* moves);
 	void makeBestMove();
 };
 

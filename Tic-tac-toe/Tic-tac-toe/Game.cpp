@@ -17,7 +17,7 @@ Game::Game()
 		break;
 	case 2:
 		humPlayer = 'O';
-		aiPlayer = 'O';
+		aiPlayer = 'X';
 		cout << endl << "You choosed \"O\"" << endl;
 		break;
 	default:
