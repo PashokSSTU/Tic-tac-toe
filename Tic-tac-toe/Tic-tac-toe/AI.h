@@ -17,9 +17,8 @@ private:
 
 	Board* brd;
 	GameProcessing* process;
-
+	int count = 0;
 public:
-
 	AI(Board* _brd, GameProcessing* _process);
 
 	~AI()

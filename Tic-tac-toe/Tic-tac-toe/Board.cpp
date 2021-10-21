@@ -34,9 +34,24 @@ void Board::Display()
 	cout << endl;
 }
 
-void Board::Choose(int num, char player)
+bool Board::Choose(int num, char player)
 {
+	if (player == ' ')
+	{
+		board_arr[num / 3][num % 3 - 1] = (char)num + 48;
+		amountFreeCeils++;
+		return 1;
+	}
+
+	if (board_arr[num / 3][num % 3 - 1] == 'X' || board_arr[num / 3][num % 3 - 1] == 'O')
+	{
+		cout << "Error! This ceil is not empty!" << endl;
+		return 0;
+	}
+
 	board_arr[num / 3][num % 3 - 1] = player;
 	amountFreeCeils--;
+
+	return 1;
 }
 

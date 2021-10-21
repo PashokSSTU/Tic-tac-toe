@@ -14,10 +14,9 @@ public:
 	{}
 
 	void Display();
-	void Choose(int num, char player);
+	bool Choose(int num, char player);
 	int getAmountFreeCeils() { return amountFreeCeils; }
 	void setAmountFreeCeils(int num) { amountFreeCeils = num; }
-	void incrAmountFreeCeils() { amountFreeCeils++; }
 
 	friend class GameProcessing;
 	friend class AI;

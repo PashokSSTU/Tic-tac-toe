@@ -25,7 +25,7 @@ Game::Game()
 		exit(1);
 		break;
 	}
-	process = new GameProcessing(ch, &board);
+	process = new GameProcessing(humPlayer, &board);
 	ai = new AI(&board, process);
 }
 
@@ -40,8 +40,21 @@ Game::~Game()
 
 bool Game::isOver()
 {
-	if (process->isWinning(humPlayer) || process->isWinning(aiPlayer) || (board.getAmountFreeCeils() == 0))
+	if (process->isWinning(humPlayer))
+	{
+		cout << endl << "Player is winning!" << endl;
 		return true;
-	
+	}
+	else if(process->isWinning(aiPlayer))
+	{
+		cout << endl << "AI is winning!" << endl;
+		return true;
+	}
+	else if ((board.getAmountFreeCeils() == 0))
+	{
+		cout << endl << "Tie!" << endl;
+		return true;
+	}
+
 	return false;
 }

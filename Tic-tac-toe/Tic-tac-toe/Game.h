@@ -10,10 +10,9 @@ private:
 	char aiPlayer;
 
 	GameProcessing* process;
-	AI* ai;
+	AI* ai;	
 public:
 	Board board;
-
 	Game();
 	~Game();
 
