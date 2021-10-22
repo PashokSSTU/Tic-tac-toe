@@ -11,7 +11,7 @@ AI::AI(Board* _brd, GameProcessing* _process) :brd(_brd), process(_process)
 }
 
 
-int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
+int AI::minimax(int depth, bool isAI, int alpha, int beta, vector<AI::Move>* moves)
 {
 	count++;
 	if (process->AIWinning())
@@ -40,9 +40,16 @@ int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
 				{
 					brd->Choose(3 * i + j + 1, process->getAIPlayer()); // Делаем ход
 
-					bestScore = max(bestScore, minimax(depth + 1, false));
+					bestScore = max(bestScore, minimax(depth + 1, false, alpha, beta));
 
 					brd->Choose(3 * i + j + 1, ' '); // Убираем ход
+
+					alpha = max(bestScore, alpha);
+
+					if (beta <= alpha)
+					{
+						return bestScore;
+					}
 
 					if (depth == 0)
 					{
@@ -72,9 +79,16 @@ int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
 				{
 					brd->Choose(3 * i + j + 1, process->getHumPlayer()); // Делаем ход
 
-					bestScore = min(bestScore, minimax(depth + 1, true));
+					bestScore = min(bestScore, minimax(depth + 1, true, alpha, beta));
 
 					brd->Choose(3 * i + j + 1, ' '); // Убираем ход
+
+					beta = min(bestScore, beta);
+
+					if (beta <= alpha)
+					{
+						return bestScore;
+					}
 
 					if (depth == 0)
 					{
@@ -104,7 +118,7 @@ void AI::makeBestMove()
 
 	vector<Move> nextMoves(0); // Вектор возможных ходов ИИ с их оценкой
 
-	minimax(0, true, &nextMoves);
+	minimax(0, true, -1000000, 1000000, &nextMoves);
 
 	// Выборка наилучшего хода для ИИ
 	int bestScore = -1000000;

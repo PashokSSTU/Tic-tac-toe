@@ -14,7 +14,7 @@ int main()
 		cout << "Would you like restart game? [Y/N]" << endl;
 		cin >> ch;
 
-		if (ch != 'Y' && ch != 'N')
+		if (ch != 'Y' && ch != 'y' && ch != 'N' && ch != 'n')
 		{
 			cout << "Error! Incorrect value." << endl;
 			cout << "Would you like restart game? [Y/N]: ";

@@ -24,9 +24,9 @@ public:
 	~AI()
 	{}
 
-	
-	int minimax(int depth, bool isAI, vector<AI::Move>* moves = nullptr); // Вычисление оптимального
-																		//хода
+	//Вычисление оптимального хода
+	int minimax(int depth, bool isAI, int alpha, int beta, vector<AI::Move>* moves = nullptr); 
+
 	void makeBestMove(); // Функция вызова оптимального для ИИ хода
 };
 
