@@ -38,6 +38,43 @@ Game::~Game()
 	ai = nullptr;
 }
 
+void Game::Launch()
+{
+	board.Display();
+
+	while (1)
+	{
+		int choise;
+
+		// Ход игрока
+		cout << "Your move: ";
+		cin >> choise;
+		while (!board.Choose(choise, getHumPlayer()))
+		{
+			cout << "Your move: ";
+			cin >> choise;
+		}
+		cout << endl;
+
+		board.Display();
+
+		if (isOver())
+		{
+			break;
+		}
+
+		// Ход ИИ
+		cout << endl << "AI move: ";
+		AIMove();
+		board.Display();
+
+		if (isOver())
+		{
+			break;
+		}
+	}
+}
+
 bool Game::isOver()
 {
 	if (process->isWinning(humPlayer))

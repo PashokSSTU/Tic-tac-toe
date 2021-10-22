@@ -6,8 +6,8 @@
 class Game
 {
 private:
-	char humPlayer;
-	char aiPlayer;
+	char humPlayer; // Обозначение игрока
+	char aiPlayer; // Обозначение ИИ
 
 	GameProcessing* process;
 	AI* ai;	
@@ -16,9 +16,10 @@ public:
 	Game();
 	~Game();
 
-	bool isOver();
-	char getHumPlayer() { return humPlayer; }
+	void Launch(); // Запуск игры
+	bool isOver(); // Проверка игры на завершение
+	char getHumPlayer() { return humPlayer; } 
 	char getAIPlayer() { return aiPlayer; }
-	void AIMove() { ai->makeBestMove(); }
+	void AIMove() { ai->makeBestMove(); } // Функция вызова хода ИИ
 };
 

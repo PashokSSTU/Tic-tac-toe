@@ -14,9 +14,8 @@ public:
 	{}
 
 	void Display();
-	bool Choose(int num, char player);
-	int getAmountFreeCeils() { return amountFreeCeils; }
-	void setAmountFreeCeils(int num) { amountFreeCeils = num; }
+	bool Choose(int num, char player); // Функция осуществления хода
+	int getAmountFreeCeils() { return amountFreeCeils; } // Получение количества свободных клеток
 
 	friend class GameProcessing;
 	friend class AI;

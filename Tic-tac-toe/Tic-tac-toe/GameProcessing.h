@@ -4,8 +4,8 @@
 class GameProcessing
 {
 private:
-	char humPlayer;
-	char aiPlayer;
+	char humPlayer; // Обозначение игрока
+	char aiPlayer; // Обозначение ИИ
 	Board* brd;
 public:
 	GameProcessing(char hum, Board* _brd);
@@ -13,9 +13,9 @@ public:
 	~GameProcessing()
 	{}
 
-	bool isWinning(char player);
-	bool HumanWinning() { return isWinning(humPlayer); }
-	bool AIWinning() { return isWinning(aiPlayer); }
+	bool isWinning(char player); // Проверка победы игрока/ИИ
+	bool HumanWinning() { return isWinning(humPlayer); } // Проверка победы игрока
+	bool AIWinning() { return isWinning(aiPlayer); } // Проверка победы ИИ
 	char getHumPlayer() { return humPlayer; }
 	char getAIPlayer() { return aiPlayer; }
 };

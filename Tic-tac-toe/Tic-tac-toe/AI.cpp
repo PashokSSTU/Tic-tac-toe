@@ -16,12 +16,12 @@ int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
 	count++;
 	if (process->AIWinning())
 	{
-		return /*depth -*/ 10;
+		return 10;
 	}
 
 	if (process->HumanWinning())
 	{
-		return -10 /*- depth*/;
+		return -10;
 	}
 
 	if (brd->getAmountFreeCeils() == 0)
@@ -40,18 +40,22 @@ int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
 				{
 					brd->Choose(3 * i + j + 1, process->getAIPlayer()); // Делаем ход
 
-					vector<Move> moves_depth(0);
-
-					bestScore = max(bestScore, minimax(depth + 1, false, &moves_depth));
+					bestScore = max(bestScore, minimax(depth + 1, false));
 
 					brd->Choose(3 * i + j + 1, ' '); // Убираем ход
 
-					Move move;
-					move.x = i;
-					move.y = j;
-					move.score = bestScore;
+					if (depth == 0)
+					{
+						// Записываем информацию о ходах
+						vector<Move> moves_depth(0);
 
-					moves->push_back(move);
+						Move move;
+						move.x = i;
+						move.y = j;
+						move.score = bestScore;
+
+						moves->push_back(move);
+					}
 				}
 			}
 		}
@@ -68,18 +72,22 @@ int AI::minimax(int depth, bool isAI, vector<AI::Move>* moves)
 				{
 					brd->Choose(3 * i + j + 1, process->getHumPlayer()); // Делаем ход
 
-					vector<Move> moves_depth(0);
-
-					bestScore = min(bestScore, minimax(depth + 1, true, &moves_depth));
+					bestScore = min(bestScore, minimax(depth + 1, true));
 
 					brd->Choose(3 * i + j + 1, ' '); // Убираем ход
 
-					Move move;
-					move.x = i;
-					move.y = j;
-					move.score = bestScore;
+					if (depth == 0)
+					{
+						// Записываем информацию о ходах
+						vector<Move> moves_depth(0);
 
-					moves->push_back(move);
+						Move move;
+						move.x = i;
+						move.y = j;
+						move.score = bestScore;
+
+						moves->push_back(move);
+					}
 				}
 			}
 		}

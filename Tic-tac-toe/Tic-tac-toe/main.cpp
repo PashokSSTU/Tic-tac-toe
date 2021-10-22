@@ -5,39 +5,23 @@ using namespace std;
 
 int main()
 {
-	Game TicTacToe;
-	TicTacToe.board.Display();
+	char ch = 'Y';
 
-	while (1)
+	while (ch == 'Y')
 	{
-		int choise;
+		Game TicTacToe; 
+		TicTacToe.Launch(); // Начало игры
+		cout << "Would you like restart game? [Y/N]" << endl;
+		cin >> ch;
 
-		// Ход игрока
-		cout << "Your move: ";
-		cin >> choise;
-		while (!TicTacToe.board.Choose(choise, TicTacToe.getHumPlayer()))
+		if (ch != 'Y' && ch != 'N')
 		{
-			cout << "Your move: ";
-			cin >> choise;
-		}
-		cout << endl;
-		
-		TicTacToe.board.Display();
-
-		if (TicTacToe.isOver())
-		{
-			break;
-		}
-		
-		// Ход ИИ
-		cout << endl << "AI move: ";
-		TicTacToe.AIMove();
-		TicTacToe.board.Display();
-
-		if (TicTacToe.isOver())
-		{
-			break;
+			cout << "Error! Incorrect value." << endl;
+			cout << "Would you like restart game? [Y/N]: ";
+			cin >> ch;
+			cout << endl;
 		}
 	}
+
 	return 0;
 }
